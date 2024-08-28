@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary"  data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" ><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT-b_W67pMbjXsMeZuzyMWH2Fzd-lpYWVIlFWxYaXi1Gta9_YOQ" style="hight:50px;width: 50px;border-radius: 50%;" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page"><h4 style="color: skyblue;">Admin</h4></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="department" routerLinkActive="active" ><h5>Department</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="parent-category" routerLinkActive="active"><h5>Parent-Category</h5></a>
+          </li>
+        
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="child-category" routerLinkActive="active" ><h5>Child-Category</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="employees" routerLinkActive="active" ><h5>Employee</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="Tickets" routerLinkActive="active"><h5>Tickets</h5></a>
+          </li>
+        
+        </ul>
+        
+          <button class="btn btn-outline-warning" type="button" (click)="logout()">LogOut</button>
+      </div>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>

@@ -1,0 +1,62 @@
+<div>
+  <div>
+      <div style="background-color: black;text-align: center;height: 50px;"><h1 style="color: white;">Employee-Page</h1></div>
+        
+      <div style="margin-top: 40px;">
+   
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+          <div class="container">
+          <div class="row">
+              <div class="col-12 col-sm-12 col-md-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h2>All Employees List</h2>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive" id="proTeamScroll" tabindex="2" style="height: auto; width: auto;">
+                              <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th>Sr No.</th>
+                                          <th>Name</th> 
+                                          <th>Email</th>
+                                          <th>Mobile No.</th>
+                                          <th>Gender</th>
+                                          <th>Department</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                   
+                                         @for (item of data; track $index) {
+                                          <tr>
+                                          <td class="text-truncate">{{$index+1}}</td>
+                                          <td class="text-truncate">
+                                             {{item.name}}
+                                          </td>
+                                          <td class="text-truncate">{{item.email}}</td>
+                                          <td class="text-truncate">
+                                            {{item.mobileNo}}
+                                          </td>
+                                          <td class="text-truncate">
+                                            {{item.gender}}
+                                          </td>
+                                         <td class="text-truncate">
+                                            {{item.department.name}}  
+                                           </td>
+                                         
+                                      </tr>
+                                    }
+                                 </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+          
+      
+    </div>
+</div>
+

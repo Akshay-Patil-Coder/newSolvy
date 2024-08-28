@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+<div class="container">
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h2>All Tickets List</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive" id="proTeamScroll" tabindex="2" style="height: auto; width:auto">
+                    <table class="table table-striped">
+                        <thead>
+                          
+                            <tr>
+                                <th class="text-truncate">Sr No.</th>
+                                <th class="text-truncate">Department</th> 
+                                <th class="text-truncate">Parent-Category</th>
+                                <th class="text-truncate">Child-Category</th>
+                                <th class="text-truncate">Created By</th>
+                                <th class="text-truncate">Contact No</th>
+                                <th class="text-truncate">Created Date</th>
+                                <th class="text-truncate">Assigned To</th>
+                                <th class="text-truncate">Status</th>
+                                <th class="text-truncate">Update Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                              
+                         @for (item of data; track $index) {
+                          <tr>
+                                  <td class="text-truncate">{{$index+1}}</td>
+                                <td class="text-truncate">
+                                   {{item.Department}}
+                                </td>
+                                <td class="text-truncate">{{item.ParentCategory}}</td>
+                                <td class="text-truncate">
+                                  {{item.ChildCategory}}
+                                </td>
+                                <td class="text-truncate">
+                                  {{item.createdBy.name}}
+                                </td>
+                                <td class="text-truncate">
+                                  {{item.createdBy.mobileNo}}
+                                  <td class="text-truncate">
+                                    At:{{item.createdAt | date:'shortDate'}}
+                                   </td> 
+                                   <td class="text-truncate">
+                                    {{item.AssignedTo.name}}
+                                   </td> <td class="text-truncat">
+                                    {{item.status}}
+                                   </td>
+                                 <td class="text-truncate">
+                                  @if(item.status == "Created"){
+                                 <button type="button" class="btn btn-primary" (click)="changestatus(item._id,'Inprogress')">Start</button>
+                                
+                                }
+                                @else if (item.status=="Inprogress") {
+                                 <button type="button" class="btn btn-success" (click)="changestatus(item._id,'Completed')">Complete</button>
+                              
+                                }
+                                <button type="button" class="btn btn-danger" (click)="deleteTicket(item._id)">Delete</button>
+                                   </td>
+
+                                  </tr>
+                                  }
+                                   
+                         </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

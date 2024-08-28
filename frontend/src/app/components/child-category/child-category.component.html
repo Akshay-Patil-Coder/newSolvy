@@ -1,0 +1,120 @@
+<div>
+  <div>
+      <div style="background-color: black;text-align: center;height: 50px;"><h1 style="color: white;">Child-Category</h1></div>
+      <div style="display: flex;margin-left: 450px;margin-top: 20px;"><button type="button" (click)="changable=true" class="btn btn-primary">List_Of_Child-Categories</button>
+        &nbsp; &nbsp;<button type="button" (click)="changable=false" class="btn btn-success">Create_Child-Category</button> </div> 
+        <div style="width: 100%;background-color: black;height:2px;margin-top: 10px;"></div>
+        
+      <div style="margin-top: 40px;">
+        @if(changable){
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+          <div class="container">
+          <div class="row">
+              <div class="col-12 col-sm-12 col-md-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h2>All Child-Category List</h2>
+                      </div>
+                      <div class="card-body">
+                          <div class="table-responsive" id="proTeamScroll" tabindex="2" style="height: auto; overflow: hidden; outline: none;">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th class="text-truncate">Sr No.</th>
+                                  <th class="text-truncate">Department Name</th> 
+                                  <th class="text-truncate">Parent-Category Name</th> 
+                                  <th class="text-truncate">Child-Category Name</th> 
+                                  <!-- <th class="text-truncate">Actions</th>  -->
+                                  <!-- Added Actions column for Delete button -->
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let item of category; let index = index">
+                                  <td class="text-truncate">{{ index + 1 }}</td>
+                                  <td class="text-truncate">{{ item.department.name }}</td>
+                                  <td class="text-truncate">{{ item.parentCategory }}</td>
+                                  <td>
+                                    <table class="table table-striped">
+                                      <!-- <thead>
+                                        <tr>
+                                          <th class="text-truncate">Name</th>
+                                          <th class="text-truncate">Update User</th>
+                                        </tr>
+                                      </thead> -->
+                                      <tbody>
+                                        <tr *ngFor="let data of item.childCategory">
+                                          <td class="text-truncate">{{ data.name }}</td>
+                                          <td class="text-truncate">
+                                            <button type="button" class="btn btn-danger" (click)="deleteChildCategory(item.parentCategory,data.name)">Delete</button>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+        
+      }@else{
+        <section style="margin-top: 10px;">
+          <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+              <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                  <div class="card-body p-4 p-md-5">
+                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create New Child Category</h3>
+                    
+        
+                      <div class="row">
+        
+                      <div data-mdb-input-init class="form-outline">
+                            <input type="text" id="firstName" name="obj.childCategory" [(ngModel)]="obj.childCategory"  class="form-control form-control-lg" style="border: 2px solid black;" />
+                            <label class="form-label" for="firstName">Child-Category Name</label>
+                          </div>
+                        
+                          <div class="row">
+                            <div class="col-12">
+                              <div style="display: flex;">
+                                <h5 style="margin-top: 15px;">Select Department</h5>
+                                &nbsp;&nbsp;
+                                <select class="select form-control-lg" name="obj.department" [(ngModel)]="obj.department" (change)="getParentCategoryByName()">
+                                  <option *ngFor="let item of department" [value]="item._id">{{item.name}}</option>
+                                </select>
+                              </div>
+                            </div>
+                          
+                            <div class="col-12">
+                              <div style="display: flex; margin-top: 5px;">
+                                <h5 style="margin-top: 15px;">Select Parent-Category</h5>
+                                &nbsp;&nbsp;
+                                <select class="select form-control-lg" name="obj.parentCategory" [(ngModel)]="obj.parentCategory">
+                                  <option *ngFor="let item of parentCategory" [value]="item.parentCategory">{{item.parentCategory}}</option>
+                                </select>
+                             
+                          </div>
+                           </div>
+                        </div>
+                        <div class="mt-4 pt-2">
+                          <input data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" (click)="createchildcategory()" value="Submit" />
+                        </div>
+          
+                      </div>  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      }  
+    
+    </div>
+</div>
+

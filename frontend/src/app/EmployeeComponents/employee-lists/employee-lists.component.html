@@ -1,0 +1,60 @@
+<div>
+    <div>
+        <div style="background-color: black;text-align: center;height: 50px;"><h1 style="color: white;">Department Information</h1></div>
+          
+        <div style="margin-top: 40px;">
+         
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  
+            <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>All Department Information List</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive" id="proTeamScroll" tabindex="2" style="height: auto; overflow: hidden; outline: none;">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th class="text-truncate">Sr No.</th>
+                                    <th class="text-truncate">Department Name</th> 
+                                    <th class="text-truncate">Parent-Category Name</th> 
+                                    <th class="text-truncate">Child-Category Name</th> 
+                                    <!-- <th class="text-truncate">Actions</th>  -->
+                                    <!-- Added Actions column for Delete button -->
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of category; let index = index">
+                                    <td class="text-truncate">{{ index + 1 }}</td>
+                                    <td class="text-truncate">{{ item.department.name }}</td>
+                                    <td class="text-truncate">{{ item.parentCategory }}</td>
+                                    <td>
+                                      <table class="table table-striped">
+                                        <!-- <thead>
+                                          <tr>
+                                            <th class="text-truncate">Name</th>
+                                            <th class="text-truncate">Update User</th>
+                                          </tr>
+                                        </thead> -->
+                                        <tbody>
+                                          <tr *ngFor="let data of item.childCategory">
+                                            <td class="text-truncate">{{ data.name }}</td>
+                                           
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+          

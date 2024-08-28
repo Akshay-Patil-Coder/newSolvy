@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="custom-form-container" style="border: 2px solid black;margin-bottom: 10px;">
+        <div style="display: flex;"><img src="https://pnghq.com/wp-content/uploads/ticket-transparent-image-download-61923.png" style="width: 50px;height: 50px;"><h3>Create Ticket</h3>
+        </div>
+            <form>
+            <!-- Select Option -->
+            <div class="form-group">
+                <label for="exampleSelect">Select Department...</label>
+                <select class="form-control" id="exampleSelect" name="obj.Department" [(ngModel)]="obj.Department" (change)="getParentCategoryByName()">
+                    <option *ngFor="let item of department" [value]="item._id">{{item.name}}</option>
+                   
+                </select>
+            </div>
+            <div style="display: flex;">
+            <div class="form-group" style="width: 50%;">
+                <label for="exampleSelect">Select Parent Category...</label>
+                <select class="form-control" id="exampleSelect" name="obj.ParentCategory"  [(ngModel)]="obj.ParentCategory" (change)="getChildCategoryByName()">
+                    <option *ngFor="let item of parentCategory" [value]="item.parentCategory">{{item.parentCategory}}</option>
+                   
+                </select>
+            </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="form-group" style="width: 50%;">
+                <label for="exampleSelect">Select Child Category...</label>
+                <select class="form-control" id="exampleSelect" name="obj.ChildCategory"  [(ngModel)]="obj.ChildCategory" (click)="newObj.Department=ChildCategories[0].department.name" >
+                    <option *ngFor="let item of NewChildCategories" [value]="item.name">{{item.name}}</option>
+                </select>
+            </div></div>
+            <div class="form-group">
+                <label for="exampleSelect">Assigned To...</label>
+                <select class="form-control" id="exampleSelect" name="obj.AssignedTo"  [(ngModel)]="obj.AssignedTo" >
+                    <option *ngFor="let item of users" [value]="item._id">{{item.email}}</option>
+                    
+                </select>
+            </div>
+
+          
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label for="exampleTextarea">Write Description About Ticket...</label>
+                <textarea class="form-control" id="exampleTextarea" rows="4" placeholder="Write Description" name="obj.Description"  [(ngModel)]="obj.Description"></textarea>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <button  class="btn btn-primary" (click)="creteTickets()"> Create Ticket</button>
+            </div>
+        </form>
+    </div>
+</div>

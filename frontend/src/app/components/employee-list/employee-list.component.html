@@ -1,0 +1,171 @@
+<div>
+    <div>
+        <div style="background-color: black;text-align: center;height: 50px;"><h1 style="color: white;">Employee-Page</h1></div>
+        <div style="display: flex;margin-left: 450px;margin-top: 20px;"><button type="button" (click)="changable=true" class="btn btn-primary">List_Of_Employees</button>
+          &nbsp; &nbsp;<button type="button" (click)="changable=false" class="btn btn-success">Create_New_Employee-Profile</button> </div> 
+          <div style="width: 100%;background-color: black;height:2px;margin-top: 10px;"></div><div style="margin-top: 40px;">
+          
+        <div style="margin-top: 40px;">
+          @if(changable){
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+            <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>All Employees List</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive" id="proTeamScroll" tabindex="2" style="height: auto; width: auto;">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr No.</th>
+                                            <th>Name</th> 
+                                            <th>Email</th>
+                                            <th>Mobile No.</th>
+                                            <th>Gender</th>
+                                            <th>Department</th>
+                                            <th>Update User</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                     
+                                           @for (item of data; track $index) {
+                                            <tr>
+                                            <td class="text-truncate">{{$index+1}}</td>
+                                            <td class="text-truncate">
+                                               {{item.name}}
+                                            </td>
+                                            <td class="text-truncate">{{item.email}}</td>
+                                            <td class="text-truncate">
+                                              {{item.mobileNo}}
+                                            </td>
+                                            <td class="text-truncate">
+                                              {{item.gender}}
+                                            </td>
+                                           <td class="text-truncate">
+                                              {{item.department.name}}  
+                                             </td>
+                                           <td class="text-truncate">
+                                             <button type="button" class="btn btn-primary" (click)="updateEmployeeOnId(item._id)">Update</button>
+                                             <button type="button" class="btn btn-danger" (click)="deleteUsers(item._id)">Delete</button>
+                                               </td>
+                                        </tr>
+                                      }
+                                                               </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+        }@else{
+          <section class="vh-100 gradient-custom">
+            <div class="container py-5 h-100">
+              <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                  <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create New User...</h3>
+                      <form>
+          
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+          
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="text" id="firstName" name="obj.name" [(ngModel)]="obj.name" class="form-control form-control-lg" />
+                              <label class="form-label" for="firstName">Name</label>
+                            </div>
+          
+                          </div>
+                          <div class="col-md-6 mb-4">
+          
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="email" id="lastName" name="obj.email" [(ngModel)]="obj.email" class="form-control form-control-lg" />
+                              <label class="form-label" for="lastName" >Email</label>
+                            </div>
+          
+                          </div>
+                        </div>
+          
+                        <div class="row">
+                          <div class="col-md-6 mb-4 d-flex align-items-center">
+          
+                            <div data-mdb-input-init class="form-outline datepicker w-100">
+                              <input type="tel" minlength="1" maxlength="10" name="obj.mobileNo" [(ngModel)]="obj.mobileNo" class="form-control form-control-lg" id="birthdayDate" />
+                              <label for="birthdayDate" class="form-label" >Mobile Number</label>
+                            </div>
+          
+                          </div>
+                          <div class="col-md-6 mb-4">
+          
+                            <h6 class="mb-2 pb-1">Gender: </h6>
+          
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio"  [(ngModel)]="obj.gender" name="inlineRadioOptions" id="femaleGender"
+                                value="male" checked />
+                              <label class="form-check-label" for="femaleGender">male</label>
+                            </div>
+          
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio"  [(ngModel)]="obj.gender" name="inlineRadioOptions" id="maleGender"
+                                value="female" />
+                              <label class="form-check-label" for="maleGender">Female</label>
+                            </div>
+          
+                          
+                          </div>
+                        </div>
+          
+                        <div class="row">
+                          <div class="col-md-6 mb-4 pb-2">
+          
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="password" id="emailAddress" name="obj.password" [(ngModel)]="obj.password" class="form-control form-control-lg" />
+                              <label class="form-label" for="emailAddress">Password</label>
+                            </div>
+          
+                          </div>
+                          <div class="col-md-6 mb-4 pb-2">
+          
+                            <div data-mdb-input-init class="form-outline">
+                              <input type="password" id="phoneNumber" name="obj.confirmPassword"  [(ngModel)]="obj.confirmPassword" class="form-control form-control-lg" />
+                              <label class="form-label" for="phoneNumber">Confirm Password</label>
+                            </div>
+          
+                          </div>
+                        </div>
+          
+                        <div class="row">
+                          <div class="col-12">
+                            <div style="display: flex;">
+                             <h5 style="margin-top: 15px;">Select Department</h5>
+                             &nbsp;&nbsp;
+                            <select class="select form-control-lg" name="obj.department" [(ngModel)]="obj.department">
+                              @for (item of department; track $index) {
+                              <option [value]="item._id">{{item.name}}</option>   
+                            }
+                            </select>
+                          </div>
+                          </div>
+                        </div>
+          
+                        <div class="mt-4 pt-2">
+                          <input data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" (click)="createUsers()" value="Submit" />
+                        </div>
+          
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>        }  
+      
+      </div>
+</div>
+
