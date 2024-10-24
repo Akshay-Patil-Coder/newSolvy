@@ -24,7 +24,7 @@ app.post('/loginUser',async(req,resp)=>{
     try {
         let token;
         let result = await User.findOne({email:req.body.email}).populate('department','name')
-        console.log(req.body.email,req.body.password)
+        // console.log(req.body.email,req.body.password)
         if(result.password == req.body.password){
             resp.status(201).json({
                 response:true,
@@ -129,7 +129,7 @@ app.post('/loginHead',async(req,resp)=>{
 try {
     let token;
     let result = await Head.findOne({email:req.body.email});
-    console.log(req.body.email,req.body.password)
+    // console.log(req.body.email,req.body.password)
     if(result.password == req.body.password){
         resp.status(201).json({
             response:true,
